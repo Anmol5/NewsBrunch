@@ -1,0 +1,217 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="nasapi.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
+<script type="text/javascript">
+ $(".pin").hover(function(){
+    $("#columns").css('opacity') = '0.2';
+    });
+
+</script>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i');
+
+body {
+    background-color: #f2f2f2;
+}
+.title
+{
+    text-align: center;
+    background-color: grey; 
+}
+.tabs
+{
+    border:10px;
+   border-color: blue; 
+   text-align: center;
+}
+.modal-news
+{
+    /*background-repeat: no-repeat;
+    background-image: url('https://cdn.vox-cdn.com/thumbor/iQW9VJVkgugc1KfffsdRzvwKTRo=/0x299:4200x2498/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/10193475/871903948.jpg.jpg');
+    width: 100%;
+    height: 300px;
+    text-align: left;
+    padding-top: 200px;
+    padding-left: 40px;*/
+    background-image: url('https://cdn.vox-cdn.com/thumbor/iQW9VJVkgugc1KfffsdRzvwKTRo=/0x299:4200x2498/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/10193475/871903948.jpg.jpg');
+    position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  height:50vw;
+  min-height:200px;
+  max-height:250px;
+  min-width:300px;
+  color:#eee;
+  opacity: 0.9;
+}
+#wrapper {
+    width: 90%;
+    max-width: 1100px;
+    min-width: 1000px;
+    margin: 50px auto;
+background-color: #f2f2f2;
+}
+
+#columns {
+    -webkit-column-count: 3;
+    -webkit-column-gap: 10px;
+    -webkit-column-fill: auto;
+    -moz-column-count: 3;
+    -moz-column-gap: 10px;
+    -moz-column-fill: auto;
+    column-count: 3;
+    column-gap: 15px;
+    column-fill: auto;
+    background-color: #f2f2f2;
+}
+
+.pin {
+    display: inline-block;
+    background: #FEFEFE;
+    border: 2px solid #FAFAFA;
+    box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+    margin: 0 2px 15px;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    padding: 15px;
+    padding-bottom: 5px;
+    background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+    opacity: 1;
+    
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+}
+
+.pin img {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+    margin-bottom: 5px;
+}
+
+.pin p {
+    font: 12px/18px Arial, sans-serif;
+    color: #333;
+    margin: 0;
+}
+@media (min-width: 360px) {
+    #columns {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+        
+    }
+}
+@media (min-width: 540px) {
+    #columns {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+
+    }
+}
+@media (min-width: 780px) {
+    #columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+@media (min-width: 960px) {
+    #columns {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+}
+
+@media (min-width: 1100px) {
+    #columns {
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+        column-count: 4;
+    }
+}
+
+#columns:hover .pin:not(:hover) {
+    opacity: 0.4;
+}
+</style>
+</head>
+<body ng-app="mymodule" ng-controller="nasacontroller" data-ng-init="init('the-times-of-india')">
+	<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+                <a class="navbar-brand" href="#" ng-click="init('the-times-of-india')" style="font-family: 'Cabin Sketch', cursive;font-size:40px">NewsBrunch</a>
+            </div>
+            <form class="navbar-form navbar-left">
+      <div class="input-group">
+        <input type="text" id="search" class="form-control" placeholder="Search" name="search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="button" ng-click="topicsearch()">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+            <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#" ng-click="init('bbc-news')">BBC News</a></li>
+                <li><a href="#" ng-click="init('the-verge')">The Verge</a></li>
+                <li><a href="#" ng-click="init('the-times-of-india')">The Times of India</a></li>
+                <li><a href="#" ng-click="init('techcrunch')">TechCrunch</a></li>
+                <li><a href="#" ng-click="init('espn')">ESPN</a></li>
+                <li><a href="#" ng-click="init('the-economist')">The Economist</a></li>
+                <li><a href="#" ng-click="init('cnbc')">CNBC</a></li>
+                <li><a href="#" ng-click="init('time')">Time</a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <!--<div class="modal-news" style="background-image:url('{{article[0].urlToImage}}')" data-ng-init="init('the-times-of-india')">
+      <h1>{{message.articles[0].title}}</h1>
+    </div>-->
+   <div class="tabs">
+    <i ng-click="init('business-insider','business')" class="btn btn-primary">Business</i>&nbsp&nbsp&nbsp
+    <i ng-click="init('entertainment-weekly')" class="btn btn-primary">Entertainment</i>&nbsp&nbsp&nbsp
+    <i ng-click="init('the-times-of-india','health')" class="btn btn-primary">health</i>&nbsp&nbsp&nbsp
+    <i ng-click="init('the-times-of-india','science')" class="btn btn-primary">Science</i>&nbsp&nbsp&nbsp
+    <i ng-click="init('the-times-of-india','sports')" class="btn btn-primary">Sports</i>&nbsp&nbsp&nbsp
+    <i ng-click="init('the-times-of-india','technology')" class="btn btn-primary">Technology</i>&nbsp&nbsp&nbsp
+   </div>
+    <div id="wrapper">
+        <div ng-style="lodstyle" ng-show="load" class="load"><img src="load.gif"></img></div>
+	      <div id="columns" ng-style="colstyle">
+	      	<div class="pin" ng-repeat="article in message.articles">
+	      		<img src="{{article.urlToImage}}" />
+	      		<h2 style="color:grey">{{article.title}}</h2>
+	      		<p>{{article.description}}&nbsp<a href="{{article.url}}">Readmore...</a></p>
+	      	</div>
+	      </div>
+	  </div>
+      <footer class="navbar navbar-inverse">
+        <div class="container-fluid" style="margin-bottom:0px;color:white;text-align:center;padding-top:10px">
+            <p>All right Reserved for NewsBrunch</p>
+        </div>
+      </footer>
+</body>
+</html>
