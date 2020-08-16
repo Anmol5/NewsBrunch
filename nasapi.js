@@ -19,7 +19,7 @@ nasa.controller("nasacontroller",function($scope,$http){
 			}
 			if(category == null)
 			{
-	$http.get("https://newsapi.org/v2/everything?sources="+source+"&apiKey=b3cb4e26d9d04fb5998816a9644eea3c").then(function(res){
+	$http.get("http://newsapi.org/v2/everything?sources="+source+"&apiKey=b3cb4e26d9d04fb5998816a9644eea3c").then(function(res){
 	$scope.message = res.data;
 	$scope.load=false;
 	$scope.colstyle = {
@@ -29,7 +29,7 @@ nasa.controller("nasacontroller",function($scope,$http){
 }
 else
 {
-	$http.get("https://newsapi.org/v2/top-headlines?country=in&category="+category+"&apiKey=b3cb4e26d9d04fb5998816a9644eea3c").then(function(res){
+	$http.get("http://newsapi.org/v2/top-headlines?country=in&category="+category+"&apiKey=b3cb4e26d9d04fb5998816a9644eea3c").then(function(res){
 	$scope.message = res.data;
 	$scope.load=false;
 	$scope.colstyle = {
@@ -56,7 +56,7 @@ else
 			  "bottom": "0",
 			  "right": "0"
 			}
-	$http.get("https://newsapi.org/v2/everything?q="+topic+"&sortBy=popularity&apiKey=b3cb4e26d9d04fb5998816a9644eea3c").then(function(res){
+	$http.get("http://newsapi.org/v2/everything?q="+topic+"&sortBy=popularity&apiKey=b3cb4e26d9d04fb5998816a9644eea3c").then(function(res){
 	$scope.message = res.data;
 	$scope.load=false;
 	$scope.colstyle = {
