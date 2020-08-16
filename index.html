@@ -13,17 +13,7 @@
     $("#columns").css('opacity') = '0.2';
     });
 
-</script>
-<script type="text/javascript">
-  ( function() {
-    if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-    var unit = {"calltype":"async[2]","publisher":"nijhawananmol","width":728,"height":90,"sid":"Chitika Default"};
-    var placement_id = window.CHITIKA.units.length;
-    window.CHITIKA.units.push(unit);
-    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-}());
-</script>
-<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>	
+</script>	
 <style>
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i');
 
@@ -213,7 +203,7 @@ background-color: #f2f2f2;
 	    
         <div ng-style="lodstyle" ng-show="load" class="load"><img src="load.gif"></img></div>
 	      <div id="columns" ng-style="colstyle">
-		      <a href="//www.chitika.com/publishers/apply?refid=nijhawananmol"><img src="//images.chitika.net/ref_banners/160x600_using_adsense.gif" height="1000" width="400"/></a>
+		     
 	      	<div class="pin" ng-repeat="article in message.articles">
 	      		<img src="{{article.urlToImage}}" />
 	      		<h2 style="color:grey">{{article.title}}</h2>
